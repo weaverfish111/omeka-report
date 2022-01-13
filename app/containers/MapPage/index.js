@@ -1,6 +1,6 @@
 /**
  *
- * HomePage
+ * MapPage
  *
  */
 
@@ -13,36 +13,28 @@ import { compose } from 'redux';
 
 import injectSaga from '../../utils/injectSaga';
 import injectReducer from '../../utils/injectSaga';
-import makeSelectHomePage from './selectors';
+import makeSelectMapPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import "./style.css"
+import './style.css'
 import { Link } from 'react-router-dom';
 
-export function HomePage() {
-
-  const omekaArray = [
-    {itemName: "Zwarte Doll", itemID: "#5"},
-    {itemName: "Zwarte Toy", itemID: "#6"}
-  ]
-
+export function MapPage() {
   return (
     <div>
-      <Link to="/">Home Page</Link>
-      <Link to="/map-page">Map Page</Link>
-      {omekaArray.map((element)=>{
-        return <div className="item-holder"  >{element.itemName}{element.itemID}</div>
-      })}
+          <Link to="/">Home Page</Link>
+          <Link to="/map-page">Map Page</Link>
+          This is the map page
     </div>
   );
 }
 
-HomePage.propTypes = {
+MapPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  homePage: makeSelectHomePage(),
+  mapPage: makeSelectMapPage(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -54,8 +46,8 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
-  injectReducer({ key: 'homePage', reducer }),
-  injectSaga({ key: 'homePage', saga }),
+  injectReducer({ key: 'mapPage', reducer }),
+  injectSaga({ key: 'mapPage', saga }),
   withConnect,
   memo,
-)(HomePage);
+)(MapPage);

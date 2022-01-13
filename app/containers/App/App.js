@@ -13,6 +13,7 @@ import  {ToastContainer}  from 'react-toastify';
 import {HomePage} from '../HomePage/index'
 import 'react-toastify/dist/ReactToastify.css';
 import { modal } from '../../components/shared/ModalContainer';
+import { MapPage } from '../MapPage/index';
 
 function App({dispatch, app, map,...props}) {
 
@@ -24,6 +25,10 @@ function App({dispatch, app, map,...props}) {
                 <Route 
                   path="/"           
                   element={<HomePage/>} 
+                />
+                <Route 
+                  path="/map-page"           
+                  element={<MapPage/>} 
                 />
           </Routes>
           </div>
